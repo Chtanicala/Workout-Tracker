@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const exerciseSchema = new Schema({
+const ExerciseSchema = new Schema({
   name: {
     type: String,
+    trim: true,
   },
   type: {
     type: String,
+    required: "Select an exercise type",
+    enum: ["resistance", "cardio"]
   },
   weight: {
     type: Number,
@@ -23,6 +26,4 @@ const exerciseSchema = new Schema({
   },
 });
 
-const Exercise = mongoose.model("Exercise", exerciseSchema);
-
-module.exports = Exercise;
+module.exports = ExerciseSchema;
