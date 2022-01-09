@@ -14,11 +14,13 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false
 });
 
 // routes
-app.use("/api", routes);
+app.use(routes);
 
 app.get('/exercise', async (req, res) => {
   res.sendFile(path.join(__dirname, './public/exercise.html'));
