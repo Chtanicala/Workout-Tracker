@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Workout } = require('../models/schemas');
+const { Workout } = require('../models');
 
 router.get('/workouts', (req, res) => {
     const workouts = Workout.aggregate([
