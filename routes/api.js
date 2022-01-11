@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Workout } = require('../models/index.js');
 
-router.get('/api/workouts', (req, res) => {
+router.get('/workouts', (req, res) => {
     Workout.aggregate(
         [
         {$sort: {day: 1, _id: 1}},
@@ -15,7 +15,7 @@ router.get('/api/workouts', (req, res) => {
       })
 })
 
-router.get('/api/workouts/range', (req, res) => {
+router.get('/workouts/range', (req, res) => {
     Workout.aggregate([
         {$sort: {day: -1, _id: -1}},
         {$limit: 7},
@@ -29,7 +29,7 @@ router.get('/api/workouts/range', (req, res) => {
       })
 })
 
-router.post('/api/workouts', ({ body }, res) => {
+router.post('/workouts', ({ body }, res) => {
     Workout.create(body)
     .then(workoutData => {
         res.json(workoutData);
@@ -39,7 +39,7 @@ router.post('/api/workouts', ({ body }, res) => {
       })
 });
 
-router.put('/api/workouts/:id', (req, res) => {
+router.put('/workouts/:id', (req, res) => {
     Workout.findOne({_id: req.params.id})
 
     .then(workoutData => {

@@ -26,18 +26,5 @@ const exerciseSchema = new Schema({
   },
 });
 
-const workoutSchema = new Schema({
-  day: {
-      type: Date,
-      default: Date.now
-  },
-  exercises:
-  {
-      type: [exerciseSchema],
-      default: []
-  }
-})
 
-const Workout = mongoose.model("Workout", workoutSchema)
-
-module.exports = Workout
+module.exports = exerciseSchema
